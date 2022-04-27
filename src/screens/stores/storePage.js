@@ -14,6 +14,7 @@ const StorePage = props => {
                 source={{uri: store.logo}}
                 style={{width:"100%", height:200, resizeMode:'stretch'}}
             />
+            
         </View>
     )
 }
