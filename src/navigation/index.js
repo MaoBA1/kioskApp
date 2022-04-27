@@ -2,11 +2,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import Colors from '../Utilis/AppColors';
 
 import DashboardScreen from '../screens/dashboard/index';
 import CartScreen from '../screens/cart/index';
 import MenuScreen from '../screens/menu/index';
 import StoresScreen from '../screens/stores/index';
+import StorePage, {screenOptions as storeScreenOptions} from '../screens/stores/storePage';
 
 const DashboardStackNavigator = createStackNavigator();
 const CartStackNavigator = createStackNavigator();
@@ -49,10 +51,25 @@ export const MenuStack = () => {
 
 export const StoresStack = () => {
     return(
-        <StoresStackNavigator.Navigator>
+        <StoresStackNavigator.Navigator screenOptions={{
+            headerStyle: {
+              backgroundColor: Colors.blue1
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold'
+              
+            },
+            headerTitleAlign:'center'}}
+        >
             <StoresStackNavigator.Screen
                 name = "StoresScreen"
                 component = {StoresScreen}
+            />
+            <StoresStackNavigator.Screen
+                name = {'store'}
+                component = {StorePage}
+                options={storeScreenOptions}
             />
         </StoresStackNavigator.Navigator>
     )
